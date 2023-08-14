@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+# crate-pricing-calculator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Hello and welcome to the CrateDB Cloud Frontend Engineer coding take-home coding exercise.
 
-## Available Scripts
+You are looking at a very basic bootstrapped React application that mimics a feature of the
+actual CrateDB Cloud console - the ability to display pricing information for a CrateDB
+cluster based on the parameters the the user selects. 
 
-In the project directory, you can run:
+The user is able to select a cloud region, the name of the product (which is basically a CPU+RAM combo)
+and the number of nodes that the cluster should be deployed with. 
 
-### `npm start`
+## Starting
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```shell
+$ git clone ...
+# If you don't use nvm you can skip this part, but make sure you use node v20.
+$ nvm use
+$ npm install
+$ npm start
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## The challenge
 
-### `npm test`
+This simple application has a single component - the `DeployPage`. The component has the HTML
+already written for you. It takes the following parameters:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- A list of regions
+- A list of products
+- A value for the max cluster size
+- An object containing pricing information for products based on regions.
 
-### `npm run build`
+Your job is to implement the logic that would calculate the correct price based on what the user has selected.
+Some products have region-specific prices and some do not - in which case they use the default price for that product. 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Acceptance Criteria
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- The component shows the default price for products that do not have a region specific price
+- The component shows region specific prices for products that do have them
+- Changing the number of nodes adjusts the price accordingly (i.e. 3x nodes = 3x the price)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Non-functional requirements
 
-### `npm run eject`
+- Unit tests for the code are implemented
+- The linter is run before the code is submitted (`npm run lint -- --fix`)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## How to submit 
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Please take a `git diff` of all your changes and send them to us in a Github Gist (private).
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Please **do not** open pull requests against this repo. Doing so will immediately invalidate your
+assignment. Sorry.

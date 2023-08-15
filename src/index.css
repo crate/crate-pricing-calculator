@@ -48,20 +48,21 @@ select::-ms-expand {
   cursor: pointer;
   line-height: 1.1;
   background-color: #fff;
-  background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
 }
 
-.select select, .select::after {
-  grid-area: select;
-}
-
-.select:not(.select--multiple)::after {
-  content: "";
-  justify-self: end;
-  width: 0.8em;
-  height: 0.5em;
-  background-color: var(--select-arrow);
-  -webkit-clip-path: polygon(100% 0%, 0 0%, 50% 100%);
-          clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+button {
+  align-items: center;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #fff;
+  display: inline-flex;
+  justify-content: center;
+  font-family: inherit;
+  min-width: 10ch;
+  min-height: 44px;
+  padding: 0.25em 0.75em;
+  background-color: red;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.18);
 }
 

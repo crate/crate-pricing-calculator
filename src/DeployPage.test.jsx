@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import DeployPage from './DeployPage';
-import { PRICING, PRODUCTS, REGIONS } from './products';
+import { PRICING, PRODUCTS, REGIONS } from './data';
 
 const setup = () => {
     return render(

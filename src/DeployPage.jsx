@@ -3,39 +3,61 @@ import PropTypes from 'prop-types';
 
 function DeployPage({ regions, products, pricing }) {
     return (
-        <div style={{ width: 400 }}>
-            <h2>Cluster Configuration</h2>
-            <h3>Region</h3>
-            <select name="region" style={{ width: '100%' }}>
-                {regions.map(r => {
-                    return (
-                        <option name={r} key={r}>
-                            {r}
-                        </option>
-                    );
-                })}
-            </select>
-            <h3>Product</h3>
-            <select name="product" style={{ width: '100%' }}>
-                {products.map(p => {
-                    return (
-                        <option name={p.name} key={p.name}>
-                            {p.name} - {p.cpu} CPU Cores, {p.ram} GB Ram
-                        </option>
-                    );
-                })}
-            </select>
-            <h3>Number of nodes</h3>
-            {
-                // Please implement logic based on product.maxScale
-            }
-            <input type="range" min={0} max={999} />
-            <span>Show current value of slider here</span>
-            <h3>Price</h3>
-            {
-                // Please implement logic based on selected product and number of nodes
-            }
-            <span>${pricing.default.cr0} (Example)</span>
+        <div className="gap-4 lg:grid lg:grid-cols-12">
+            <div className="bg-white lg:col-span-8 lg:mb-0 mb-4 p-6 rounded-lg">
+                <div className="mb-6">
+                    <h3 className="font-bold font-xl mb-2">Region</h3>
+                    <div className="select">
+                        <select name="region">
+                            {regions.map(region => (
+                                <option name={region} key={region}>
+                                    {region}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                </div>
+
+                <div className="mb-6">
+                    <h3 className="font-bold font-xl mb-2">Product</h3>
+                    <div className="select">
+                        <select name="product">
+                            {products.map(product => (
+                                <option name={product.name} key={product.name}>
+                                    {product.name} - {product.cpu} CPU Cores,{' '}
+                                    {product.ram} GB Ram
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 className="font-bold font-xl mb-2">Number of nodes</h3>
+                    {/* 
+                        Please update the max property here based on the
+                        max number of nodes available for the selected product
+                        and display the current value alongside the slider
+                    */}
+                    <div className="flex justify-between">
+                        <input
+                            className="flex-grow mr-4"
+                            type="range"
+                            min={0}
+                            max={999}
+                        />
+                        <span>Show slider value here</span>
+                    </div>
+                </div>
+            </div>
+            <aside className="bg-white lg:col-span-4 p-6 rounded-lg">
+                <h3 className="font-bold font-xl mb-2">Price</h3>
+                {/* 
+                    Please display the correct price here based on the
+                    selected product, selected region and selected number of nodes
+                */}
+                <div className="font-bold text-2xl">${pricing.default.cr0}</div>
+            </aside>
         </div>
     );
 }

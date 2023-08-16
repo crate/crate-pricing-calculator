@@ -26,11 +26,11 @@ This simple application has a single component - the `DeployPage`. The component
 - A list of regions
 - A list of products
 - An object containing pricing information for products based on regions.
-- An `onSubmit` handler
+- An `onSubmit` handler (you won't need to change this)
 
 Your job is twofold
 - Implement logic to calculate and display the correct price based on the region, product and nodes combination that the user has selected. (hint: the prices passed to the DeployPage component are per-node prices)
-- Develop a Testing Library test suite that covers the logic you have written
+- Develop a Testing Library test suite to test that the correct prices are being calculated.
 
 > [!NOTE]  
 > Some products have region-specific prices and some do not - in which case they should use the default price for that product.

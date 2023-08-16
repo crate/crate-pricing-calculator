@@ -2,27 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function DeployPage({ onSubmit, pricing, products, regions }) {
-    const handleFormSubmit = event => {
-        // This function prepares the form data for submission.
-        // You do not need to modify this function but the output can be tested.
-        event.preventDefault();
-
-        onSubmit(
-            [...event.target.elements]
-                .filter(({ value }) => !!value)
-                .map(({ name, value }) => ({ [name]: value }))
-                .reduce(
-                    (accumulator, currentValue) => ({
-                        ...accumulator,
-                        ...currentValue,
-                    }),
-                    {},
-                ),
-        );
-    };
-
     return (
-        <form name="deploy-page" onSubmit={handleFormSubmit}>
+        <form name="deploy-page" onSubmit={onSubmit}>
             <div className="gap-4 lg:grid lg:grid-cols-12">
                 <div className="bg-white lg:col-span-8 lg:mb-0 mb-4 p-6 rounded-lg">
                     <div className="mb-6">
@@ -72,13 +53,21 @@ function DeployPage({ onSubmit, pricing, products, regions }) {
                         </div>
                     </div>
                 </div>
-                <aside className="bg-white lg:col-span-4 p-6 rounded-lg">
-                    <h3 className="font-bold font-xl mb-2">Price</h3>
+                <div className="bg-white lg:col-span-4 p-6 rounded-lg">
+                    <h3 className="font-bold font-xl mb-2" id="price-header">
+                        Price
+                    </h3>
                     {/* 
                         Please display the correct price here based on the
                         selected product, selected region and selected number of nodes
                     */}
-                    <div className="font-bold text-2xl">${pricing.default.cr0}</div>
+                    <div
+                        aria-labelledby="price-header"
+                        className="font-bold text-2xl"
+                        role="region"
+                    >
+                        ${pricing.default.cr0}
+                    </div>
                     <div className="flex py-4">
                         <button
                             className="bg-sky-500 inline-flex items-center p-2 rounded-lg text-neutral-50"
@@ -87,7 +76,7 @@ function DeployPage({ onSubmit, pricing, products, regions }) {
                             Deploy
                         </button>
                     </div>
-                </aside>
+                </div>
             </div>
         </form>
     );

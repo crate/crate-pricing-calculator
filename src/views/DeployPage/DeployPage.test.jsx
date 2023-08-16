@@ -1,18 +1,25 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import DeployPage from './DeployPage';
-import { PRICING, PRODUCTS, REGIONS } from './data';
+import { PRICING, PRODUCTS, REGIONS } from '../../data';
+
+const onSubmitSpy = jest.fn();
 
 const setup = () => {
     return render(
-        <DeployPage regions={REGIONS} pricing={PRICING} products={PRODUCTS} />,
+        <DeployPage
+            onSubmit={onSubmitSpy}
+            pricing={PRICING}
+            products={PRODUCTS}
+            regions={REGIONS}
+        />,
     );
 };
 
 describe('The DeployPage component', () => {
-    it('renders the component', () => {
-        const { getByText } = setup();
+    it('displays a deploy form', () => {
+        const { getByRole } = setup();
 
-        expect(getByText('Cluster Configuration')).toBeInTheDocument();
+        expect(getByRole('form')).toBeInTheDocument();
     });
 });

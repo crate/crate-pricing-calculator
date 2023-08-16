@@ -2,14 +2,33 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function DeployPage({ onSubmit, pricing, products, regions }) {
+    const handleFormSubmit = event => {
+        // This function prepares the form data for submission.
+        // You do not need to modify this function but the output can be tested.
+        event.preventDefault();
+
+        onSubmit(
+            [...event.target.elements]
+                .filter(({ value }) => !!value)
+                .map(({ name, value }) => ({ [name]: value }))
+                .reduce(
+                    (accumulator, currentValue) => ({
+                        ...accumulator,
+                        ...currentValue,
+                    }),
+                    {},
+                ),
+        );
+    };
+
     return (
-        <form name="deploy-page" onSubmit={onSubmit}>
+        <form name="deploy-page" onSubmit={handleFormSubmit}>
             <div className="gap-4 lg:grid lg:grid-cols-12">
                 <div className="bg-white lg:col-span-8 lg:mb-0 mb-4 p-6 rounded-lg">
                     <div className="mb-6">
                         <h3 className="font-bold font-xl mb-2">Region</h3>
                         <div className="select">
-                            <select name="region">
+                            <select aria-label="region" name="region">
                                 {regions.map(region => (
                                     <option name={region} key={region}>
                                         {region}
@@ -22,7 +41,7 @@ function DeployPage({ onSubmit, pricing, products, regions }) {
                     <div className="mb-6">
                         <h3 className="font-bold font-xl mb-2">Product</h3>
                         <div className="select">
-                            <select name="product">
+                            <select aria-label="product" name="product">
                                 {products.map(product => (
                                     <option value={product.name} key={product.name}>
                                         {product.name.toUpperCase()} - {product.cpu}{' '}
@@ -42,6 +61,7 @@ function DeployPage({ onSubmit, pricing, products, regions }) {
                         */}
                         <div className="flex justify-between">
                             <input
+                                aria-label="nodes"
                                 className="flex-grow mr-4"
                                 type="range"
                                 name="nodes"

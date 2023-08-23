@@ -3,12 +3,10 @@ import { render } from '@testing-library/react';
 import DeployPage from './DeployPage';
 import { PRICING, PRODUCTS, REGIONS } from '../../data';
 
-const onSubmitSpy = jest.fn();
-
 const setup = () => {
     return render(
         <DeployPage
-            onSubmit={onSubmitSpy}
+            onSubmit={jest.fn()}
             pricing={PRICING}
             products={PRODUCTS}
             regions={REGIONS}

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import convertToDollars from '../../currency';
 
 function DeployPage({ onSubmit, pricing, products, regions }) {
     return (
@@ -44,10 +45,10 @@ function DeployPage({ onSubmit, pricing, products, regions }) {
                             <input
                                 aria-label="nodes"
                                 className="flex-grow mr-4"
-                                type="range"
                                 name="nodes"
                                 min={0}
                                 max={999}
+                                type="range"
                             />
                             <span>Show slider value here</span>
                         </div>
@@ -66,7 +67,7 @@ function DeployPage({ onSubmit, pricing, products, regions }) {
                         className="font-bold text-2xl"
                         role="region"
                     >
-                        ${pricing.default.cr0}
+                        {convertToDollars(pricing.default.cr0)}
                     </div>
                     <div className="flex py-4">
                         <button
